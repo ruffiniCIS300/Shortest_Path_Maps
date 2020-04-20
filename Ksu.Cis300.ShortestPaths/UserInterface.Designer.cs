@@ -52,12 +52,14 @@
             // 
             this.uxFindPath.Enabled = false;
             this.uxFindPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxFindPath.Location = new System.Drawing.Point(16, 115);
+            this.uxFindPath.Location = new System.Drawing.Point(32, 221);
+            this.uxFindPath.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.uxFindPath.Name = "uxFindPath";
-            this.uxFindPath.Size = new System.Drawing.Size(276, 34);
+            this.uxFindPath.Size = new System.Drawing.Size(552, 65);
             this.uxFindPath.TabIndex = 51;
             this.uxFindPath.Text = "Find Shortest Path";
             this.uxFindPath.UseVisualStyleBackColor = true;
+            this.uxFindPath.Click += new System.EventHandler(this.uxFindPath_Click);
             // 
             // uxOpenDialog
             // 
@@ -68,10 +70,11 @@
             this.uxMap.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.uxMap.Location = new System.Drawing.Point(298, 54);
-            this.uxMap.MinimumSize = new System.Drawing.Size(20, 20);
+            this.uxMap.Location = new System.Drawing.Point(596, 104);
+            this.uxMap.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.uxMap.MinimumSize = new System.Drawing.Size(40, 38);
             this.uxMap.Name = "uxMap";
-            this.uxMap.Size = new System.Drawing.Size(805, 685);
+            this.uxMap.Size = new System.Drawing.Size(1610, 1317);
             this.uxMap.TabIndex = 50;
             this.uxMap.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.uxMap_Navigated);
             // 
@@ -81,10 +84,11 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.uxNodeList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uxNodeList.FormattingEnabled = true;
-            this.uxNodeList.ItemHeight = 20;
-            this.uxNodeList.Location = new System.Drawing.Point(129, 187);
+            this.uxNodeList.ItemHeight = 37;
+            this.uxNodeList.Location = new System.Drawing.Point(258, 360);
+            this.uxNodeList.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.uxNodeList.Name = "uxNodeList";
-            this.uxNodeList.Size = new System.Drawing.Size(163, 544);
+            this.uxNodeList.Size = new System.Drawing.Size(322, 1040);
             this.uxNodeList.TabIndex = 49;
             this.uxNodeList.SelectedIndexChanged += new System.EventHandler(this.uxNodeList_SelectedIndexChanged);
             // 
@@ -92,9 +96,10 @@
             // 
             this.uxPathLabel.AutoSize = true;
             this.uxPathLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxPathLabel.Location = new System.Drawing.Point(12, 187);
+            this.uxPathLabel.Location = new System.Drawing.Point(24, 360);
+            this.uxPathLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.uxPathLabel.Name = "uxPathLabel";
-            this.uxPathLabel.Size = new System.Drawing.Size(111, 20);
+            this.uxPathLabel.Size = new System.Drawing.Size(220, 37);
             this.uxPathLabel.TabIndex = 48;
             this.uxPathLabel.Text = "Shortest Path:";
             // 
@@ -102,26 +107,28 @@
             // 
             this.uxDistance.Enabled = false;
             this.uxDistance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxDistance.Location = new System.Drawing.Point(94, 155);
+            this.uxDistance.Location = new System.Drawing.Point(188, 298);
+            this.uxDistance.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.uxDistance.Name = "uxDistance";
             this.uxDistance.ReadOnly = true;
-            this.uxDistance.Size = new System.Drawing.Size(198, 26);
+            this.uxDistance.Size = new System.Drawing.Size(392, 44);
             this.uxDistance.TabIndex = 47;
             // 
             // uxDistanceLabel
             // 
             this.uxDistanceLabel.AutoSize = true;
             this.uxDistanceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxDistanceLabel.Location = new System.Drawing.Point(12, 158);
+            this.uxDistanceLabel.Location = new System.Drawing.Point(24, 304);
+            this.uxDistanceLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.uxDistanceLabel.Name = "uxDistanceLabel";
-            this.uxDistanceLabel.Size = new System.Drawing.Size(76, 20);
+            this.uxDistanceLabel.Size = new System.Drawing.Size(150, 37);
             this.uxDistanceLabel.TabIndex = 46;
             this.uxDistanceLabel.Text = "Distance:";
             // 
             // uxLoad
             // 
             this.uxLoad.Name = "uxLoad";
-            this.uxLoad.Size = new System.Drawing.Size(163, 22);
+            this.uxLoad.Size = new System.Drawing.Size(359, 44);
             this.uxLoad.Text = "Load a map";
             this.uxLoad.Click += new System.EventHandler(this.uxLoad_Click);
             // 
@@ -129,9 +136,10 @@
             // 
             this.uxSetEnd.Enabled = false;
             this.uxSetEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxSetEnd.Location = new System.Drawing.Point(257, 83);
+            this.uxSetEnd.Location = new System.Drawing.Point(514, 160);
+            this.uxSetEnd.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.uxSetEnd.Name = "uxSetEnd";
-            this.uxSetEnd.Size = new System.Drawing.Size(35, 26);
+            this.uxSetEnd.Size = new System.Drawing.Size(70, 50);
             this.uxSetEnd.TabIndex = 45;
             this.uxSetEnd.Text = "<-";
             this.uxSetEnd.UseVisualStyleBackColor = true;
@@ -140,9 +148,10 @@
             // uxEndNode
             // 
             this.uxEndNode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxEndNode.Location = new System.Drawing.Point(129, 83);
+            this.uxEndNode.Location = new System.Drawing.Point(258, 160);
+            this.uxEndNode.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.uxEndNode.Name = "uxEndNode";
-            this.uxEndNode.Size = new System.Drawing.Size(122, 26);
+            this.uxEndNode.Size = new System.Drawing.Size(240, 44);
             this.uxEndNode.TabIndex = 44;
             this.uxEndNode.Click += new System.EventHandler(this.uxEndNode_TextChanged);
             this.uxEndNode.TextChanged += new System.EventHandler(this.uxEndNode_TextChanged);
@@ -151,9 +160,10 @@
             // 
             this.uxSetStart.Enabled = false;
             this.uxSetStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxSetStart.Location = new System.Drawing.Point(257, 51);
+            this.uxSetStart.Location = new System.Drawing.Point(514, 98);
+            this.uxSetStart.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.uxSetStart.Name = "uxSetStart";
-            this.uxSetStart.Size = new System.Drawing.Size(35, 26);
+            this.uxSetStart.Size = new System.Drawing.Size(70, 50);
             this.uxSetStart.TabIndex = 42;
             this.uxSetStart.Text = "<-";
             this.uxSetStart.UseVisualStyleBackColor = true;
@@ -163,9 +173,10 @@
             // 
             this.uxStartLabel.AutoSize = true;
             this.uxStartLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxStartLabel.Location = new System.Drawing.Point(12, 54);
+            this.uxStartLabel.Location = new System.Drawing.Point(24, 104);
+            this.uxStartLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.uxStartLabel.Name = "uxStartLabel";
-            this.uxStartLabel.Size = new System.Drawing.Size(111, 20);
+            this.uxStartLabel.Size = new System.Drawing.Size(223, 37);
             this.uxStartLabel.TabIndex = 40;
             this.uxStartLabel.Text = "Starting Node:";
             // 
@@ -173,18 +184,20 @@
             // 
             this.uxEndLabel.AutoSize = true;
             this.uxEndLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxEndLabel.Location = new System.Drawing.Point(12, 86);
+            this.uxEndLabel.Location = new System.Drawing.Point(24, 165);
+            this.uxEndLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.uxEndLabel.Name = "uxEndLabel";
-            this.uxEndLabel.Size = new System.Drawing.Size(105, 20);
+            this.uxEndLabel.Size = new System.Drawing.Size(212, 37);
             this.uxEndLabel.TabIndex = 43;
             this.uxEndLabel.Text = "Ending Node:";
             // 
             // uxStartNode
             // 
             this.uxStartNode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxStartNode.Location = new System.Drawing.Point(129, 51);
+            this.uxStartNode.Location = new System.Drawing.Point(258, 98);
+            this.uxStartNode.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.uxStartNode.Name = "uxStartNode";
-            this.uxStartNode.Size = new System.Drawing.Size(122, 26);
+            this.uxStartNode.Size = new System.Drawing.Size(240, 44);
             this.uxStartNode.TabIndex = 41;
             this.uxStartNode.Click += new System.EventHandler(this.uxStartNode_TextChanged);
             this.uxStartNode.TextChanged += new System.EventHandler(this.uxStartNode_TextChanged);
@@ -195,32 +208,35 @@
             this.uxLoad,
             this.uxEntireMap});
             this.uxToolsMenu.Name = "uxToolsMenu";
-            this.uxToolsMenu.Size = new System.Drawing.Size(47, 20);
+            this.uxToolsMenu.Size = new System.Drawing.Size(90, 38);
             this.uxToolsMenu.Text = "Tools";
+            this.uxToolsMenu.Click += new System.EventHandler(this.uxToolsMenu_Click);
             // 
             // uxEntireMap
             // 
             this.uxEntireMap.Enabled = false;
             this.uxEntireMap.Name = "uxEntireMap";
-            this.uxEntireMap.Size = new System.Drawing.Size(163, 22);
+            this.uxEntireMap.Size = new System.Drawing.Size(359, 44);
             this.uxEntireMap.Text = "Show entire map";
             this.uxEntireMap.Click += new System.EventHandler(this.uxEntireMap_Click);
             // 
             // uxMenuBar
             // 
+            this.uxMenuBar.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.uxMenuBar.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.uxMenuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.uxToolsMenu});
             this.uxMenuBar.Location = new System.Drawing.Point(0, 0);
             this.uxMenuBar.Name = "uxMenuBar";
-            this.uxMenuBar.Size = new System.Drawing.Size(1115, 24);
+            this.uxMenuBar.Size = new System.Drawing.Size(2230, 44);
             this.uxMenuBar.TabIndex = 39;
             this.uxMenuBar.Text = "menuStrip1";
             // 
             // UserInterface
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1115, 742);
+            this.ClientSize = new System.Drawing.Size(2230, 1427);
             this.Controls.Add(this.uxFindPath);
             this.Controls.Add(this.uxMap);
             this.Controls.Add(this.uxNodeList);
@@ -234,6 +250,7 @@
             this.Controls.Add(this.uxEndLabel);
             this.Controls.Add(this.uxStartNode);
             this.Controls.Add(this.uxMenuBar);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "UserInterface";
             this.Text = "Shortest Path Finder";
             this.uxMenuBar.ResumeLayout(false);

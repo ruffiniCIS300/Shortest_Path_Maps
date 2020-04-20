@@ -1,5 +1,5 @@
 ﻿/* UserInterface.cs
- * Author: Rod Howell */
+ * Author: Nick Ruffini */
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -290,6 +290,124 @@ namespace Ksu.Cis300.ShortestPaths
                 uxSetStart.Enabled = false;
                 uxSetEnd.Enabled = false;
                 uxFindPath.Enabled = false;
+            }
+        }
+
+        /// <summary>
+        /// Nothing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uxToolsMenu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Uses Dijkstra's Algorithm to find the shortest distance in a graph between point u and v!
+        /// </summary>
+        /// <param name="u"> Name of the node we are starting at </param>
+        /// <param name="v">Name of the node that serves as our destination </param>
+        /// <param name="map"> Map that we are sifting through to find the shortest path </param>
+        /// <param name="paths"> Dictionary whose keys are a node, and the value is it's previous node </param>
+        /// <returns> The shortest path in decimal form! </returns>
+        private static decimal ShortestPath(string u, string v, DirectedGraph<string, decimal> map, out Dictionary<string, string> paths)
+        {
+            paths = new Dictionary<string, string>();
+            // String value in Edge is a node that has already been visited!
+            // Priority is the shortest path up until the source node (string value in Edge)
+            MinPriorityQueue<decimal, Edge<string, decimal>> queue = new MinPriorityQueue<decimal, Edge<string, decimal>>();
+
+            paths.Add(u, u);
+            if (u == v)
+            {
+                return 0;
+            }
+
+            foreach(Edge<string, decimal> edge in map.OutgoingEdges(u))
+            {
+                queue.Add(edge.Data, edge);
+            }
+
+            while(queue.Count != 0)
+            {
+                decimal minPriority = queue.MinimumPriority;
+                Edge<string, decimal> nextEdge = queue.RemoveMinimumPriority();
+                if (paths.ContainsKey(nextEdge.Destination) == false)
+                {
+                    paths.Add(nextEdge.Destination, nextEdge.Source);
+                    if (nextEdge.Destination == v)
+                    {
+                        return minPriority;
+                    }
+                    foreach (Edge<string, decimal> edge in map.OutgoingEdges(nextEdge.Destination))
+                    {
+                        //queue.Add(edge.Data, edge);
+                        queue.Add(minPriority + edge.Data, edge);
+                    }
+                }
+            }
+            return -1;
+        }
+
+        /// <summary>
+        /// Gives us the correct path with the shortest overall length!
+        /// </summary>
+        /// <param name="u"> Source node we are starting at! </param>
+        /// <param name="v"> Destinatino node we are ending at! </param>
+        /// <param name="paths"> Dictionary filled with previous nodes of each node </param>
+        /// <param name="list"> List we are adding to as we pull items off the stack </param>
+        private static void AddPath(string u, string v, Dictionary<string, string> paths, IList list)
+        {
+            Stack newStack = new Stack();
+            string cur = v;
+
+            while (cur != u)
+            {
+                newStack.Push(cur);
+                cur = paths[cur];
+            }
+
+            list.Add(u);
+
+            while (newStack.Count != 0)
+            {
+                list.Add(newStack.Pop());
+            }
+        }
+
+        /// <summary>
+        /// Finds the shortest path between 2 locations!
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uxFindPath_Click(object sender, EventArgs e)
+        {
+            if (!_map.ContainsNode(uxStartNode.Text))
+            {
+                ShowError(uxStartNode.Text);
+            }
+            else if (!_map.ContainsNode(uxEndNode.Text))
+            {
+                ShowError(uxEndNode.Text);
+            }
+            else
+            {
+                Dictionary<string, string> paths;
+                decimal len = Math.Round(ShortestPath(uxStartNode.Text, uxEndNode.Text, _map, out paths), 1);
+                uxNodeList.Items.Clear();
+                if (len < 0)
+                {
+                    uxDistance.Text = "";
+                    MessageBox.Show("No path found.");
+                }
+                else
+                {
+                    uxDistance.Text = len + _distanceUnit;
+                    uxNodeList.BeginUpdate();
+                    AddPath(uxStartNode.Text, uxEndNode.Text, paths, uxNodeList.Items);
+                    uxNodeList.EndUpdate();
+                }
             }
         }
     }
